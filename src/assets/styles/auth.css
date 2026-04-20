@@ -1,0 +1,18 @@
+.auth{
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #f3f0ee;
+}
+
+.auth__card{
+  width:700px;
+  height:85vh;
+  border-radius: 20px;
+  background: #FEFEFE;
+  padding:3% 10%;
+}
+
+
