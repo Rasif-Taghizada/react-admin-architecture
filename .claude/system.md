@@ -1,9 +1,15 @@
 # .claude/ folder
 
-This folder is used by Claude Code for project-level configuration.
+This folder is reserved for Claude Code project-level configuration.
 
-- `settings.json` — tool permissions, hooks (auto-run commands on events)
-- `commands/` — custom slash commands (e.g. `/new-module`, `/new-service`)
+Current contents:
+
+- `system.md` — explains where project rules live
+
+Optional future files:
+
+- `settings.json` — tool permissions, hooks
+- `commands/` — custom slash commands
 
 ## Architecture rules
 

@@ -1,0 +1,15 @@
+---
+description: Core architecture rules for the admin panel
+alwaysApply: true
+---
+
+# Core Architecture
+
+- Stack: React 19, Vite 7, TypeScript, Ant Design 5, Redux Toolkit, React Router v7.
+- Keep app code under `src`; shared code goes in `src/common`, feature code in `src/modules`.
+- `src/App.tsx` owns Redux Provider, theme provider, Suspense, and RouterProvider wiring.
+- Routing is centralized in `src/routers/index.tsx`; page components should be lazy-loaded.
+- Redux has two slices: `auth` and `config`; avoid adding slices unless architecture intentionally changes.
+- Feature lists, selected records, loading flags, filters, and modal state should stay local with `useState`.
+- Use TypeScript types for props, API payloads, service returns, and table rows.
+- Prefer existing shared wrappers (`TableLists`, `AppModal`, `AppButton`, `openNotification`) before adding new UI abstractions.

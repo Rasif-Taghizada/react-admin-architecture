@@ -27,8 +27,8 @@ All rules are derived from this project's actual codebase — nothing generic.
 
 ```
 src/
-├── main.tsx                        # Entry point — imports i18n BEFORE App
-├── App.tsx                         # Redux Provider + Suspense + RouterProvider
+├── main.tsx                        # Entry point — imports i18n and applies saved theme early
+├── App.tsx                         # Redux Provider + ThemedApp + ConfigProvider + RouterProvider
 │
 ├── assets/                         # Static files (icons, images)
 │
@@ -70,7 +70,7 @@ src/
 │   │   ├── index.ts                # RootState, AppDispatch exports
 │   │   └── slices/
 │   │       ├── authSlices.ts       # Auth state — user, tokens, loading, error
-│   │       └── configSlice.ts      # UI config — sidebarCollapsed, userRole
+│   │       └── configSlice.ts      # UI config — sidebarCollapsed, userRole, themeMode
 │   │
 │   ├── types/
 │   │   └── index.ts                # ALL shared interfaces/types live here
@@ -126,7 +126,7 @@ Service function    ← plain async fn in common/libs/services/
     ↓
 axiosInstance       ← adds Bearer token + X-TRACE-ID, handles 401 refresh
     ↓
-Redux Thunk         ← ONLY for auth (login/logout/getProfile) + config (userRole/sidebar)
+Redux / config      ← auth thunks + config reducers (userRole/sidebar/themeMode)
 ```
 
 Everything else (feature data, loading state, modal state) stays in component-level `useState`.
@@ -135,11 +135,33 @@ Everything else (feature data, loading state, modal state) stays in component-le
 
 ## Rules by Topic
 
+### Imports — `@/` Alias
+
+```typescript
+// ✅ Project imports always use the src alias
+import AppButton from '@/common/components/shared/button';
+import { getUsersService } from '@/common/libs/services/userService';
+import type { ApiUser } from '@/modules/users/types';
+
+// ✅ Packages use package names
+import { useTranslation } from 'react-i18next';
+
+// ❌ Avoid deep relative imports and node_modules paths
+import AppButton from '../../../../common/components/shared/button';
+import { useTranslation } from '../../../../../node_modules/react-i18next';
+```
+
+- `@` maps to `src` in `vite.config.ts` and `tsconfig.app.json`
+- Use relative imports only for same-folder CSS modules/assets when it is clearly local
+- Never import from `node_modules/...` directly
+
+---
+
 ### HTTP — Axios
 
 ```typescript
 // ✅ Always import from axiosInstance
-import axios from '../axiosInstance';
+import axios from '@/common/libs/axiosInstance';
 
 const getFeatureService = async (params = {}) => {
   const response = await axios.get(feature.all, { params });
@@ -175,7 +197,7 @@ const feature = {
 export { auth, user, tenants, feature };
 
 // Service uses it:
-import { feature } from '../constants';
+import { feature } from '@/common/libs/constants';
 await axios.get(feature.byId(id));
 
 // ❌ Never hardcode URLs in service functions
@@ -188,9 +210,9 @@ await axios.get(`Feature/features/${id}`);
 
 ```typescript
 // ✅ Correct — common/libs/services/featureService.ts
-import axios from '../axiosInstance';
-import { feature } from '../constants';
-import type { CreateFeatureData, FeatureItem } from '../../types';
+import axios from '@/common/libs/axiosInstance';
+import { feature } from '@/common/libs/constants';
+import type { CreateFeatureData, FeatureItem } from '@/common/types';
 
 const getFeaturesService = async (params = {}) => {
   const response = await axios.get(feature.all, { params });
@@ -268,6 +290,7 @@ dispatch(login(credentials));
 dispatch(getProfile());
 dispatch(logout());
 dispatch(toggleSidebarCollapsed());
+dispatch(setThemeMode('dark'));
 dispatch(setUserRole('ADMIN'));
 dispatch(updateNotificationAccess(true));
 dispatch(updateUser({ firstName: 'John' }));
@@ -276,13 +299,14 @@ dispatch(updateUser({ firstName: 'John' }));
 const user = useSelector((state: RootState) => state.auth.user);
 const userRole = useSelector((state: RootState) => state.config.userRole);
 const collapsed = useSelector((state: RootState) => state.config.sidebarCollapsed);
+const themeMode = useSelector((state: RootState) => state.config.themeMode);
 
 // ❌ Never put feature data in Redux:
 // tenants list, users list, documents, loading state, modal visibility
 // — these all belong in local useState
 ```
 
-Redux has exactly two slices — `auth` and `config`. Do not add more slices.
+Redux has exactly two slices — `auth` and `config`. Do not add more slices unless the architecture is intentionally changed.
 
 ---
 
@@ -557,6 +581,23 @@ import { useTranslation } from '../../../../../node_modules/react-i18next';
 
 ---
 
+### Theme — Light / Dark
+
+```typescript
+// ✅ Theme state lives in configSlice
+const themeMode = useSelector((state: RootState) => state.config.themeMode);
+dispatch(setThemeMode('light'));
+dispatch(setThemeMode('dark'));
+```
+
+- `App.tsx` owns Ant Design `ConfigProvider` and switches `defaultAlgorithm` / `darkAlgorithm`
+- `main.tsx` applies saved `themeMode` before render to reduce theme flash
+- CSS colors must use project variables (`--color--primary`, `--color--shell`, `--color--surface`)
+- Add both light and `[data-theme='dark']` values when introducing new app-level colors
+- Persisted localStorage key: `themeMode`
+
+---
+
 ### Dates
 
 ```typescript
@@ -576,8 +617,8 @@ formatDate(value, true)     // date + time — az-AZ locale
 
 ```typescript
 // ✅ Always lazy-import page components
-const FeatureLists = lazy(() => import('../modules/feature/pages/featureLists'));
-const FeatureDetail = lazy(() => import('../modules/feature/pages/featureDetail'));
+const FeatureLists = lazy(() => import('@/modules/feature/pages/featureLists'));
+const FeatureDetail = lazy(() => import('@/modules/feature/pages/featureDetail'));
 
 // Add to router:
 {
@@ -590,7 +631,7 @@ const FeatureDetail = lazy(() => import('../modules/feature/pages/featureDetail'
 }
 
 // ❌ Never eager-import pages
-import FeatureLists from '../modules/feature/pages/featureLists';
+import FeatureLists from '@/modules/feature/pages/featureLists';
 ```
 
 ---
@@ -688,4 +729,4 @@ if (userRole === 'ADMIN') { ... }
 | Eager-loading page components | Use `lazy()` |
 | `import x from 'node_modules/...'` | Use package name only |
 | Hardcoded user-facing text | Use `t('namespace.key')` |
-| `localStorage` access for arbitrary data | Only tokens (`access_token`, `refresh_token`), `lang`, `sidebarCollapsed` |
+| `localStorage` access for arbitrary data | Only tokens (`access_token`, `refresh_token`), `lang`, `sidebarCollapsed`, `themeMode` |

@@ -1,0 +1,16 @@
+---
+description: Import alias and i18n conventions
+globs: src/**/*.{ts,tsx,js,jsx}
+alwaysApply: false
+---
+
+# Imports And i18n
+
+- Use `@/` for imports from `src`; `@` maps to `src` in Vite and TypeScript config.
+- Use package names for dependencies, e.g. `react-i18next`; never import from `node_modules/...`.
+- Avoid deep relative imports like `../../../../common/...`.
+- Keep project imports stable: `@/common/...`, `@/modules/...`, `@/layouts/...`, `@/assets/...`.
+- User-facing text must use `t('namespace.key')`.
+- Supported locales are `az`, `en`, and `ru`; update all three locale files for new UI text.
+- Persist selected language in `localStorage` key `lang`.
+- Do not mix hardcoded Azerbaijani/English/Russian labels inside components.

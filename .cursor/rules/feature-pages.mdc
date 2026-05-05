@@ -1,0 +1,16 @@
+---
+description: Feature page, table, pagination, and form patterns
+globs: src/modules/**/*.{ts,tsx}
+alwaysApply: false
+---
+
+# Feature Pages
+
+- Feature modules live under `src/modules/{feature}` with `pages`, `components`, and `types` where needed.
+- Page wrappers should expose nested routes with `<Outlet />`.
+- Pagination uses `useSearchParams` with `PageNumber` and `PageSize`; do not store page/pageSize only in component state.
+- Search should use `useDebounce(value, 500)` and reset `PageNumber` to `1`.
+- Tables should use `TableLists` with typed `ColumnsType<T>` and `rowKey="id"` when possible.
+- Forms should use Ant Design `Form.useForm()` and `layout="vertical"`.
+- Put shared types in `@/common/types`; feature-specific types in `@/modules/{feature}/types`.
+- Add routes in `src/routers/index.tsx` with `lazy(() => import('@/modules/...'))`.

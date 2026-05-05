@@ -1,0 +1,16 @@
+---
+description: Ant Design, layout, and light/dark theme rules
+globs: src/**/*.{tsx,css}
+alwaysApply: false
+---
+
+# UI And Theme
+
+- Use Ant Design 5 components and project wrappers for common UI patterns.
+- Layout should stay consistent with `AppLayout`, `Header`, and `Sider`.
+- `themeMode` lives in `configSlice`; `App.tsx` switches Ant Design `defaultAlgorithm` and `darkAlgorithm`.
+- App-level colors must use CSS variables from `src/index.css`.
+- When adding app-level colors, define both `:root` and `[data-theme='dark']` values.
+- Avoid hardcoded brand/trademark colors or third-party logos.
+- Make new UI readable in both light and dark modes.
+- Prefer Ant Design tokens and props before custom CSS.

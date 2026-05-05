@@ -1,0 +1,16 @@
+---
+description: Data fetching, services, and error handling rules
+globs: src/**/*.{ts,tsx}
+alwaysApply: false
+---
+
+# Data Services
+
+- API calls belong in `src/common/libs/services`; components should call service functions, not axios directly.
+- Use `@/common/libs/axiosInstance`; do not create extra axios clients or use `fetch` for app API calls.
+- Endpoint paths belong in `@/common/libs/constants`.
+- Service functions are plain async functions and should return `response.data`.
+- Name service functions with `{verb}{Domain}Service`.
+- Type request payloads and response shapes; avoid `any` in new code.
+- Axios interceptor owns common error notifications; local catch blocks should log with `console.error` and release loading state.
+- Use `openNotification()` for explicit success/error feedback; avoid `message.*` and raw `notification.*` in components.
