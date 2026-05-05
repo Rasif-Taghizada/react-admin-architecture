@@ -1,6 +1,6 @@
-import type { DocumentCreateValues } from '../../types';
-import axios from '../axiosInstance';
-import { document } from '../constants';
+import type { DocumentCreateValues } from '@/common/types';
+import axios from '@/common/libs/axiosInstance';
+import { document } from '@/common/libs/constants';
 
 
 const buildFormData = (v: DocumentCreateValues) => {

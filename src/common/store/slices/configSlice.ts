@@ -1,11 +1,14 @@
 import { type PayloadAction, createSlice } from '@reduxjs/toolkit';
-import type { UserProfile } from '../../types';
+import type { UserProfile } from '@/common/types';
 
 export type UserRole = 'USER' | 'ADMIN';
+
+export type ThemeMode = 'light' | 'dark';
 
 interface ConfigState {
   sidebarCollapsed: boolean;
   userRole: UserRole | null;
+  themeMode: ThemeMode;
 }
 
 // Role müəyyənləşdirmə funksiyası
@@ -32,6 +35,7 @@ export const determineUserRole = (user: UserProfile | null): UserRole => {
 const initialState: ConfigState = {
   sidebarCollapsed: localStorage.getItem('sidebarCollapsed') === 'true' || false,
   userRole: null,
+  themeMode: localStorage.getItem('themeMode') === 'dark' ? 'dark' : 'light',
 };
 
 const configSlice = createSlice({
@@ -52,9 +56,19 @@ const configSlice = createSlice({
     clearUserRole(state) {
       state.userRole = null;
     },
+    setThemeMode(state, action: PayloadAction<ThemeMode>) {
+      state.themeMode = action.payload;
+      localStorage.setItem('themeMode', action.payload);
+    },
   },
 });
 
-export const { setSidebarCollapsed, toggleSidebarCollapsed, setUserRole, clearUserRole } = configSlice.actions;
+export const {
+  setSidebarCollapsed,
+  toggleSidebarCollapsed,
+  setUserRole,
+  clearUserRole,
+  setThemeMode,
+} = configSlice.actions;
 
 export default configSlice.reducer;

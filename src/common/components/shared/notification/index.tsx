@@ -1,5 +1,5 @@
 import { notification } from 'antd';
-import type { NotificationOptions } from '../../../types';
+import type { NotificationOptions } from '@/common/types';
 // import { SmileOutlined } from '@ant-design/icons';
 
 export const openNotification = ({ type, width, title, content }: NotificationOptions): void => {

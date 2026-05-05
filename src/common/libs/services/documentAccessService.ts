@@ -1,5 +1,5 @@
-import axios from '../axiosInstance';
-import { documentAccess, documentAccessPermissions, contentPermission } from '../constants';
+import axios from '@/common/libs/axiosInstance';
+import { documentAccess, documentAccessPermissions, contentPermission } from '@/common/libs/constants';
 
 const getDocumentAccessService = async (id: string) => {
   const response = await axios.get(`${documentAccess.documentShare}/${id}`);

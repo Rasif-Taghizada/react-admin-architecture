@@ -1,7 +1,7 @@
 import { Pagination, Table } from 'antd';
 import React from 'react';
 import type { TableProps as AntTableProps } from 'antd';
-import type { TableProps } from '../../../types'; 
+import type { TableProps } from '@/common/types'; 
 
 // const TableLists: React.FC<TableProps & { onRow?: AntTableProps<any>['onRow'] }> = (props) => {
 //   const { 

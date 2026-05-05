@@ -1,5 +1,5 @@
-import axios from '../axiosInstance';
-import { auth } from '../constants';
+import axios from '@/common/libs/axiosInstance';
+import { auth } from '@/common/libs/constants';
 
 const loginService = async (data: any) => {
   const response = await axios.post(auth.signIn, data);

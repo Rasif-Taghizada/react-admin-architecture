@@ -1,20 +1,21 @@
 // ProfileSettings.tsx
 import React, { useEffect, useMemo, useState } from 'react';
-import { Card, Input, Button, Select, Switch, Typography, Space, Form } from 'antd';
-import { GlobalOutlined, BellOutlined } from '@ant-design/icons';
-import { useTranslation } from '../../../../../node_modules/react-i18next';
+import { Card, Input, Button, Select, Switch, Typography, Space, Form, Segmented } from 'antd';
+import { GlobalOutlined, BellOutlined, BgColorsOutlined } from '@ant-design/icons';
+import { useTranslation } from 'react-i18next';
 import { useSelector, useDispatch } from 'react-redux';
-import type { RootState } from '../../../../common/store';
-import { updateNotificationAccess, updateUser } from '../../../../common/store/slices/authSlices';
-import ChangePassModal from '../../components/modals/changePass';
-import { changePasswordService } from '../../../../common/libs/services/authService';
+import type { RootState } from '@/common/store';
+import { updateNotificationAccess, updateUser } from '@/common/store/slices/authSlices';
+import { setThemeMode, type ThemeMode } from '@/common/store/slices/configSlice';
+import ChangePassModal from '@/modules/settings/components/modals/changePass';
+import { changePasswordService } from '@/common/libs/services/authService';
 import {
   updateUserNotificationAccessService,
   updateUserService,
-} from '../../../../common/libs/services/userService';
-import type { UpdateUserParams } from '../../../../common/types';
-import { openNotification } from '../../../../common/components/shared/notification';
-import { validateName } from '../../../../common/utils/helper/error';
+} from '@/common/libs/services/userService';
+import type { UpdateUserParams } from '@/common/types';
+import { openNotification } from '@/common/components/shared/notification';
+import { validateName } from '@/common/utils/helper/error';
 
 const { Title, Text } = Typography;
 
@@ -22,6 +23,7 @@ const ProfileSettings: React.FC = () => {
   const { i18n, t } = useTranslation();
   const dispatch = useDispatch();
   const user = useSelector((state: RootState) => state.auth.user);
+  const themeMode = useSelector((state: RootState) => state.config.themeMode);
 
   const [profileForm] = Form.useForm();
   const [passForm] = Form.useForm();
@@ -101,6 +103,10 @@ const ProfileSettings: React.FC = () => {
   const handleLanguageChange = (lng: string) => {
     i18n.changeLanguage(lng);
     localStorage.setItem('lang', lng);
+  };
+
+  const handleThemeChange = (value: string | number) => {
+    dispatch(setThemeMode(value as ThemeMode));
   };
 
   const handleNotificationChange = async (checked: boolean) => {
@@ -295,8 +301,8 @@ const ProfileSettings: React.FC = () => {
                 loading={isSaving}
                 disabled={!hasChanges || isSaving}
                 style={{
-                  backgroundColor: hasChanges ? '#d97757' : '#d9d9d9',
-                  borderColor: hasChanges ? '#d97757' : '#d9d9d9',
+                  backgroundColor: hasChanges ? 'var(--color--primary)' : '#d9d9d9',
+                  borderColor: hasChanges ? 'var(--color--primary)' : '#d9d9d9',
                   borderRadius: 8,
                 }}
               >
@@ -337,6 +343,30 @@ const ProfileSettings: React.FC = () => {
           </Card>
 
           <Card style={{ borderRadius: 12, border: '1px solid #e0e0e0', boxShadow: 'none' }}>
+            <div
+              style={{
+                display: 'flex',
+                flexWrap: 'wrap',
+                gap: 16,
+                justifyContent: 'space-between',
+                alignItems: 'center',
+              }}>
+              <Space>
+                <BgColorsOutlined style={{ fontSize: 20, color: '#666' }} />
+                <Text style={{ fontSize: 15 }}>{t('settings.appearance')}</Text>
+              </Space>
+              <Segmented
+                value={themeMode}
+                onChange={handleThemeChange}
+                options={[
+                  { label: t('settings.light'), value: 'light' },
+                  { label: t('settings.dark'), value: 'dark' },
+                ]}
+              />
+            </div>
+          </Card>
+
+          <Card style={{ borderRadius: 12, border: '1px solid #e0e0e0', boxShadow: 'none' }}>
             <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
               <Space>
                 <BellOutlined style={{ fontSize: 20, color: '#666' }} />
@@ -348,7 +378,7 @@ const ProfileSettings: React.FC = () => {
                 onChange={handleNotificationChange}
                 loading={isUpdatingNotification}
                 disabled={isUpdatingNotification}
-                style={{ backgroundColor: notificationsEnabled ? '#d97757' : '#d9d9d9' }}
+                style={{ backgroundColor: notificationsEnabled ? 'var(--color--primary)' : '#d9d9d9' }}
               />
             </div>
           </Card>

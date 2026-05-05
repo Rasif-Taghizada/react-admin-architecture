@@ -13,15 +13,15 @@
 }
 
 .sidebar-menu .ant-menu-item-selected {
-  background: #fdfbf9;              
-  border: 1px solid #d77a47;        
+  background: var(--color--primary-muted);
+  border: 1px solid var(--color--primary);
   border-radius: 999px;
-  color: #000;
+  color: var(--color--black);
 }
 
 .sidebar-menu .ant-menu-item-selected .ant-menu-title-content,
 .sidebar-menu .ant-menu-item-selected .ant-menu-item-icon {
-  color: #000;
+  color: var(--color--black);
 }
 
 .sidebar-menu .ant-menu-item:not(.ant-menu-item-selected) {
@@ -32,6 +32,10 @@
 .sidebar-menu .ant-menu-item:hover {
   background: rgba(0, 0, 0, 0.02);
   border-radius: 999px;
+}
+
+[data-theme='dark'] .sidebar-menu .ant-menu-item:hover {
+  background: rgba(255, 255, 255, 0.06);
 }
 
 .header_search{
@@ -110,13 +114,13 @@
 
 /* FILE row – hamısı eyni açıq krem */
 .fm-card-file {
-  background: #fff4eb;
+  background: var(--color--primary-muted);
 }
 
 .fm-card:hover {
   transform: translateY(-1px);
   box-shadow: 0 10px 12px rgba(15, 23, 42, 0.12) !important;
-  border-color: #e5dfd8 !important;
+  border-color: #c5cfe0 !important;
 }
 
 .fm-card-label {
@@ -136,7 +140,7 @@
 }
 
 .fm-preview-inner {
-  background: #fff9f4;             /* kartdan bir ton açıq */
+  background: var(--color--primary-soft);
   border-radius: 14px;
   padding: 18px;
   display: flex;

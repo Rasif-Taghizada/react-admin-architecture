@@ -1,9 +1,9 @@
 // ChangePassModal.tsx
 import React from 'react';
 import { Input, Form } from 'antd';
-import AppModal from '../../../../../common/components/shared/modals';
-import AppButton from '../../../../../common/components/shared/button';
-import { useTranslation } from '../../../../../../node_modules/react-i18next';
+import AppModal from '@/common/components/shared/modals';
+import AppButton from '@/common/components/shared/button';
+import { useTranslation } from 'react-i18next';
 
 interface ChangePassModalProps {
   modalOpen: boolean;
@@ -84,8 +84,8 @@ const ChangePassModal: React.FC<ChangePassModalProps> = ({
               height: 44,
               cursor: 'pointer',
               borderRadius: 999,
-              backgroundColor: '#d97757',
-              borderColor: '#d97757',
+              backgroundColor: 'var(--color--primary)',
+              borderColor: 'var(--color--primary)',
               fontWeight: 500,
             }}
           >

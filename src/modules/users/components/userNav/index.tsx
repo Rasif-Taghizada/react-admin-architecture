@@ -2,8 +2,8 @@ import React from 'react';
 import { Button, Typography } from 'antd';
 import { ArrowLeftOutlined, PlusOutlined } from '@ant-design/icons';
 import { useParams } from 'react-router-dom';
-import type { UsersPageHeaderProps } from '../../types';
-import { useTranslation } from '../../../../../node_modules/react-i18next';
+import type { UsersPageHeaderProps } from '@/modules/users/types';
+import { useTranslation } from 'react-i18next';
 
 const { Text } = Typography;
 

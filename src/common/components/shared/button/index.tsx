@@ -1,7 +1,7 @@
 import React, { memo } from "react";
 import { Link } from "react-router-dom";
-import type { AppButtonProps } from "./type";
-import { SIZES, VARIANTS } from "../../../utils/constant/config";
+import type { AppButtonProps } from "@/common/components/shared/button/type";
+import { SIZES, VARIANTS } from "@/common/utils/constant/config";
 
 
 const AppButton: React.FC<AppButtonProps> = (props) => {

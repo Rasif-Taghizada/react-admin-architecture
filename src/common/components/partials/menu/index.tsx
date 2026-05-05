@@ -6,10 +6,10 @@ import {
   TeamOutlined,
   SettingOutlined,
 } from '@ant-design/icons';
-import { useTranslation } from '../../../../../node_modules/react-i18next';
+import { useTranslation } from 'react-i18next';
 import { useSelector } from 'react-redux';
-import type { RootState } from '../../../store';
-import type { UserRole } from '../../../store/slices/configSlice';
+import type { RootState } from '@/common/store';
+import type { UserRole } from '@/common/store/slices/configSlice';
 
 type MenuItemConfig = {
   key: string;

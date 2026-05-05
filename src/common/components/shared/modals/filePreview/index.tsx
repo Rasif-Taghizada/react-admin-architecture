@@ -1,11 +1,11 @@
 import React from 'react';
-import type { FileType } from '../../../../../modules/trash/types';
-import ImagePreview from '../../filePreviewLists/image';
-import DocumentPreview from '../../filePreviewLists/document';
-import VideoPreview from '../../filePreviewLists/video';
-import AudioPreview from '../../filePreviewLists/audio';
-import TextPreview from '../../filePreviewLists/text';
-import OtherPreview from '../../filePreviewLists/other';
+import type { FileType } from '@/modules/trash/types';
+import ImagePreview from '@/common/components/shared/filePreviewLists/image';
+import DocumentPreview from '@/common/components/shared/filePreviewLists/document';
+import VideoPreview from '@/common/components/shared/filePreviewLists/video';
+import AudioPreview from '@/common/components/shared/filePreviewLists/audio';
+import TextPreview from '@/common/components/shared/filePreviewLists/text';
+import OtherPreview from '@/common/components/shared/filePreviewLists/other';
 import AppModal from '..';
 
 

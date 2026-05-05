@@ -1,15 +1,15 @@
 import React, { useState, useEffect } from 'react';
 import { Button, Dropdown, Flex, Input, Layout } from 'antd';
 import { LogoutOutlined, MenuFoldOutlined, MenuUnfoldOutlined } from '@ant-design/icons';
-import { SIDEBAR_COLLAPSED_WIDTH, SIDEBAR_WIDTH } from '../common/utils/constant/config';
+import { SIDEBAR_COLLAPSED_WIDTH, SIDEBAR_WIDTH } from '@/common/utils/constant/config';
 import { useDispatch, useSelector } from 'react-redux';
-import type { RootState } from '../common/store';
-import { logout } from '../common/store/slices/authSlices';
-import { toggleSidebarCollapsed, clearUserRole } from '../common/store/slices/configSlice';
-import { useTranslation } from '../../node_modules/react-i18next';
+import type { RootState } from '@/common/store';
+import { logout } from '@/common/store/slices/authSlices';
+import { toggleSidebarCollapsed, clearUserRole } from '@/common/store/slices/configSlice';
+import { useTranslation } from 'react-i18next';
 import { useSearchParams, useLocation } from 'react-router-dom';
-import { logoutService } from '../common/libs/services/authService';
-import { useDebounce } from '../common/utils/hooks/useDebounce';
+import { logoutService } from '@/common/libs/services/authService';
+import { useDebounce } from '@/common/utils/hooks/useDebounce';
 
 const { Header } = Layout;
 
@@ -81,11 +81,11 @@ const LayoutContentHeader: React.FC = () => {
         left: sidebarWidth,
         width: `calc(100% - ${sidebarWidth}px)`,
         zIndex: 100,
-        padding: '0 16px',
+        padding: '0',
         display: 'flex',
         justifyContent: 'space-between',
         alignItems: 'center',
-        background: '#f3f0ee',
+        background: 'var(--color--shell)',
       }}>
       <Button
         type="text"

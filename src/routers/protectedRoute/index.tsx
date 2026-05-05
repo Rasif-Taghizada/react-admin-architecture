@@ -1,9 +1,9 @@
 import React, { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import type { ProtectedRouteProps } from './type';
-import type { AppDispatch, RootState } from '../../common/store';
+import type { ProtectedRouteProps } from '@/routers/protectedRoute/type';
+import type { AppDispatch, RootState } from '@/common/store';
 import { useDispatch, useSelector } from 'react-redux';
-import { getProfile } from '../../common/store/slices/authSlices';
+import { getProfile } from '@/common/store/slices/authSlices';
 
 const ProtectedRoute: React.FC<ProtectedRouteProps> = ({ children }) => {
   const token = useSelector((state: RootState) => state.auth.access_token);

@@ -1,8 +1,8 @@
 import { Card, Flex } from 'antd';
 import Title from 'antd/es/typography/Title';
-import { LogoSmall } from '../../../../assets/icons';
-import RegisterFormItem from '../../components/registerForm';
-import { useTranslation } from '../../../../../node_modules/react-i18next';
+import { LogoSmall } from '@/assets/icons';
+import RegisterFormItem from '@/modules/auth/components/registerForm';
+import { useTranslation } from 'react-i18next';
 
 const Register = () => {
   const { t } = useTranslation();

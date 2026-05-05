@@ -3,11 +3,11 @@ import { Layout, theme } from 'antd';
 import { Outlet } from 'react-router-dom';
 import { ErrorBoundary } from 'react-error-boundary';
 import { useSelector } from 'react-redux';
-import type { RootState } from '../common/store';
-import ErrorPage from '../common/components/partials/error';
-import SiderBar from './Sider';
-import LayoutContentHeader from './Header';
-import { SIDEBAR_COLLAPSED_WIDTH, SIDEBAR_WIDTH } from '../common/utils/constant/config';
+import type { RootState } from '@/common/store';
+import ErrorPage from '@/common/components/partials/error';
+import SiderBar from '@/layouts/Sider';
+import LayoutContentHeader from '@/layouts/Header';
+import { SIDEBAR_COLLAPSED_WIDTH, SIDEBAR_WIDTH } from '@/common/utils/constant/config';
 
 const { Content } = Layout;
 
@@ -19,7 +19,7 @@ const AppLayout: React.FC = () => {
 
   return (
     <ErrorBoundary fallbackRender={({ error }) => <ErrorPage error={error} resetErrorBoundary={() => void {}} />}>
-      <Layout style={{ minHeight: '100vh', background: '#f3f0ee' }}>
+      <Layout style={{ minHeight: '100vh', background: 'var(--color--shell)' }}>
         <SiderBar collapsed={collapsed} />
         <Layout
           style={{
@@ -30,7 +30,7 @@ const AppLayout: React.FC = () => {
             style={{
               // margin: '8px',
               padding: 24,
-              minHeight: '100vh',
+              minHeight: 'calc(100vh - 64px)',
               background: colorBgContainer,
               borderRadius: borderRadiusLG,
               overflowY: 'auto',

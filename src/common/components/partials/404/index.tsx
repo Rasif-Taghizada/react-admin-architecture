@@ -1,7 +1,7 @@
 import React from "react";
 import { Button, Result } from "antd";
-import { useMoveBack } from "../../../utils/hooks/useMoveBack";
-import { useTranslation } from '../../../../../node_modules/react-i18next';
+import { useMoveBack } from "@/common/utils/hooks/useMoveBack";
+import { useTranslation } from 'react-i18next';
 
 const NotFound: React.FC = () => {
   const { t } = useTranslation();

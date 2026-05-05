@@ -4,11 +4,11 @@
 // import type { ColumnsType } from 'antd/es/table';
 // import { useParams } from 'react-router-dom';
 
-// import TableLists from '../../../../common/components/shared/table';
-// import { useMoveBack } from '../../../../common/utils/hooks/useMoveBack';
-// import type { ApiUser } from '../../types';
-// import { UsersPageHeader } from '../../components/userNav';
-// import { getUserByIdService, updateUserStatusService } from '../../../../common/libs/services/userService';
+// import TableLists from '@/common/components/shared/table';
+// import { useMoveBack } from '@/common/utils/hooks/useMoveBack';
+// import type { ApiUser } from '@/modules/users/types';
+// import { UsersPageHeader } from '@/modules/users/components/userNav';
+// import { getUserByIdService, updateUserStatusService } from '@/common/libs/services/userService';
 
 // const { Text } = Typography;
 

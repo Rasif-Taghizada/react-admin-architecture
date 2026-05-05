@@ -1,9 +1,9 @@
 import React from 'react';
 import { Button, Space, Avatar, Typography, Col, Card, List } from 'antd';
 import { UserOutlined, FolderOutlined, FilePdfOutlined } from '@ant-design/icons';
-import type { UserActivity, UserDetailData, UserDocumentShare } from '../../types';
-import { formatDate } from '../../../../common/utils/helper/formatDate';
-import { useTranslation } from '../../../../../node_modules/react-i18next';
+import type { UserActivity, UserDetailData, UserDocumentShare } from '@/modules/users/types';
+import { formatDate } from '@/common/utils/helper/formatDate';
+import { useTranslation } from 'react-i18next';
 
 const { Text, Title } = Typography;
 

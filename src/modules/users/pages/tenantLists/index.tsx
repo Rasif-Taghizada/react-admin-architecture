@@ -3,18 +3,18 @@ import { Space, Avatar, Tag, Typography, message } from 'antd';
 import { BankOutlined } from '@ant-design/icons';
 import type { ColumnsType } from 'antd/es/table';
 import { useNavigate, useSearchParams } from 'react-router-dom';
-import { useTranslation } from '../../../../../node_modules/react-i18next';
+import { useTranslation } from 'react-i18next';
 
-import TableLists from '../../../../common/components/shared/table';
-import { type TenantData } from '../../types';
-import { UsersPageHeader } from '../../components/userNav';
-import AppModal from '../../../../common/components/shared/modals';
-import TableFilter from '../../../../common/components/shared/tableFilter';
-import { getTenantsService } from '../../../../common/libs/services/tenantService';
-import InviteUsersModalContent from '../../components/modals/invitedTenant';
-import { postInviteUsersService } from '../../../../common/libs/services/userService';
-import { openNotification } from '../../../../common/components/shared/notification';
-import { useDebounce } from '../../../../common/utils/hooks/useDebounce';
+import TableLists from '@/common/components/shared/table';
+import { type TenantData } from '@/modules/users/types';
+import { UsersPageHeader } from '@/modules/users/components/userNav';
+import AppModal from '@/common/components/shared/modals';
+import TableFilter from '@/common/components/shared/tableFilter';
+import { getTenantsService } from '@/common/libs/services/tenantService';
+import InviteUsersModalContent from '@/modules/users/components/modals/invitedTenant';
+import { postInviteUsersService } from '@/common/libs/services/userService';
+import { openNotification } from '@/common/components/shared/notification';
+import { useDebounce } from '@/common/utils/hooks/useDebounce';
 
 const { Text } = Typography;
 

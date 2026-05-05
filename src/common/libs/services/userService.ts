@@ -1,6 +1,6 @@
-import type { UpdateUserParams } from '../../types';
-import axios from '../axiosInstance';
-import { user } from '../constants';
+import type { UpdateUserParams } from '@/common/types';
+import axios from '@/common/libs/axiosInstance';
+import { user } from '@/common/libs/constants';
 
 const getUsersAllService = async () => {
   const response = await axios.get(user.all);

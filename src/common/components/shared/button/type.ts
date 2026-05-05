@@ -1,4 +1,4 @@
-import type { SIZES, VARIANTS } from "../../../utils/constant/config";
+import type { SIZES, VARIANTS } from "@/common/utils/constant/config";
 
 type Variant = keyof typeof VARIANTS;
 type Size = keyof typeof SIZES;

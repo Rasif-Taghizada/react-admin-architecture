@@ -1,7 +1,7 @@
 import React from 'react';
 import { Typography } from 'antd';
 import { FilePdfOutlined } from '@ant-design/icons';
-import { useTranslation } from '../../../../../../node_modules/react-i18next';
+import { useTranslation } from 'react-i18next';
 
 const { Text } = Typography;
 

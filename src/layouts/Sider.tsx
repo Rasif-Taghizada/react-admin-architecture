@@ -1,11 +1,11 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { Layout } from 'antd';
-import type { SiderBarProps } from '../common/types';
-import MenuLists from '../common/components/partials/menu';
-import logo from '../assets/images/mclogo.png';
-import { SIDEBAR_COLLAPSED_WIDTH, SIDEBAR_WIDTH } from '../common/utils/constant/config';
-import { LogoSmall } from '../assets/icons';
+import type { SiderBarProps } from '@/common/types';
+import MenuLists from '@/common/components/partials/menu';
+import wordmark from '@/assets/images/brand-wordmark.svg';
+import { SIDEBAR_COLLAPSED_WIDTH, SIDEBAR_WIDTH } from '@/common/utils/constant/config';
+import { LogoSmall } from '@/assets/icons';
 
 const { Sider } = Layout;
 
@@ -23,7 +23,7 @@ const SiderBar: React.FC<SiderBarProps> = ({ collapsed }) => {
         left: 0,
         top: 0,
         zIndex: 99,
-        background: '#f3f0ee',
+        background: 'var(--color--shell)',
         transition: 'all 0.3s ease',
       }}>
       <div
@@ -37,7 +37,13 @@ const SiderBar: React.FC<SiderBarProps> = ({ collapsed }) => {
           alignItems: 'center',
           borderRadius: 8,
         }}>
-        <Link to="/">{collapsed ? <LogoSmall /> : <img src={logo} alt="logo" />}</Link>
+        <Link to="/">
+          {collapsed ? (
+            <LogoSmall />
+          ) : (
+            <img src={wordmark} alt="" width={160} height={36} style={{ display: 'block' }} />
+          )}
+        </Link>
       </div>
       <MenuLists />
     </Sider>

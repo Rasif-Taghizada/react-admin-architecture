@@ -1,5 +1,5 @@
-import axios from '../axiosInstance';
-import { tenants } from '../constants';
+import axios from '@/common/libs/axiosInstance';
+import { tenants } from '@/common/libs/constants';
 
 
 const getTenantsService = async (query_params = {}) => {

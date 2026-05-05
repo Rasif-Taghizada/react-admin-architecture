@@ -1,6 +1,6 @@
-import type { CreateNotificationData, NotificationRecipientData } from '../../../modules/notification/utils/types';
-import axios from '../axiosInstance';
-import { notification } from '../constants';
+import type { CreateNotificationData, NotificationRecipientData } from '@/modules/notification/utils/types';
+import axios from '@/common/libs/axiosInstance';
+import { notification } from '@/common/libs/constants';
 
 
  const notificationService = async () => {

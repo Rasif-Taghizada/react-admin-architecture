@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
 import { Input, Select, Button, Tag, Space, message } from 'antd';
 import { CloseCircleOutlined } from '@ant-design/icons';
-import type { InviteUsersModalContentProps } from '../../../types';
-import { validateEmail } from '../../../../../common/utils/helper';
-import { useTranslation } from '../../../../../../node_modules/react-i18next';
+import type { InviteUsersModalContentProps } from '@/modules/users/types';
+import { validateEmail } from '@/common/utils/helper';
+import { useTranslation } from 'react-i18next';
 
 
 const InviteUsersModalContent: React.FC<InviteUsersModalContentProps> = ({ 
@@ -149,21 +149,21 @@ const InviteUsersModalContent: React.FC<InviteUsersModalContentProps> = ({
           onClick={handleDone}
           disabled={!isFormValid}
           style={{
-            backgroundColor: isFormValid ? '#e67e22' : undefined,
-            borderColor: isFormValid ? '#e67e22' : undefined,
+            backgroundColor: isFormValid ? 'var(--color--primary)' : undefined,
+            borderColor: isFormValid ? 'var(--color--primary)' : undefined,
             minWidth: '100px',
             borderRadius: '6px',
           }}
           onMouseEnter={(e) => {
             if (isFormValid) {
-              e.currentTarget.style.backgroundColor = '#d35400';
-              e.currentTarget.style.borderColor = '#d35400';
+              e.currentTarget.style.backgroundColor = 'var(--color--primary-hover)';
+              e.currentTarget.style.borderColor = 'var(--color--primary-hover)';
             }
           }}
           onMouseLeave={(e) => {
             if (isFormValid) {
-              e.currentTarget.style.backgroundColor = '#e67e22';
-              e.currentTarget.style.borderColor = '#e67e22';
+              e.currentTarget.style.backgroundColor = 'var(--color--primary)';
+              e.currentTarget.style.borderColor = 'var(--color--primary)';
             }
           }}
         >

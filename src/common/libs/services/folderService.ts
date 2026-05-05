@@ -1,6 +1,6 @@
-import axios from '../axiosInstance';
-import { folder } from '../constants';
-import type { FolderCreateData, FolderUpdateData, FolderGetAllParams } from '../../types';
+import axios from '@/common/libs/axiosInstance';
+import { folder } from '@/common/libs/constants';
+import type { FolderCreateData, FolderUpdateData, FolderGetAllParams } from '@/common/types';
 
 const postFolderService = async (data: FolderCreateData) => {
   const response = await axios.post(folder.base, data);

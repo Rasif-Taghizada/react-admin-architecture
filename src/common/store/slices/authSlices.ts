@@ -1,8 +1,8 @@
 import { type PayloadAction, createAsyncThunk, createSlice } from '@reduxjs/toolkit';
-import { loginService, profileService } from '../../libs/services/authService';
-import type { AuthState, LoginData, LoginResponse, UserProfile } from '../../types';
-import { determineUserRole, setUserRole } from './configSlice';
-import type { AppDispatch } from '../index';
+import { loginService, profileService } from '@/common/libs/services/authService';
+import type { AuthState, LoginData, LoginResponse, UserProfile } from '@/common/types';
+import { determineUserRole, setUserRole } from '@/common/store/slices/configSlice';
+import type { AppDispatch } from '@/common/store/index';
 
 const initialState: AuthState = {
   user: null,

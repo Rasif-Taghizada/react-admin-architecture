@@ -13,8 +13,8 @@ import {
 import type {
   SelectionBarProps as BaseSelectionBarProps,
   SelectionBarAction,
-} from '../../../types';
-import { useTranslation } from '../../../../../node_modules/react-i18next';
+} from '@/common/types';
+import { useTranslation } from 'react-i18next';
 
 const { Text } = Typography;
 

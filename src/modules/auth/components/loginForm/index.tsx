@@ -1,9 +1,9 @@
 import React, { useEffect } from 'react';
 import { Flex, Form, Input } from 'antd';
-import type { FormItemProps } from '../../types';
-import styles from './index.module.css';
-import AppButton from '../../../../common/components/shared/button';
-import { useTranslation } from '../../../../../node_modules/react-i18next';
+import type { FormItemProps } from '@/modules/auth/types';
+import styles from '@/modules/auth/components/loginForm/index.module.css';
+import AppButton from '@/common/components/shared/button';
+import { useTranslation } from 'react-i18next';
 
 const LoginFormItem: React.FC<FormItemProps> = (props) => {
   const { t } = useTranslation();

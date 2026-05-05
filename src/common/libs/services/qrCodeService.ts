@@ -1,6 +1,6 @@
-import type { QrPostPayload } from '../../types';
-import axios from '../axiosInstance';
-import { qrCode } from '../constants';
+import type { QrPostPayload } from '@/common/types';
+import axios from '@/common/libs/axiosInstance';
+import { qrCode } from '@/common/libs/constants';
 
 
 const postQRCodeService = async (payload: QrPostPayload) => {

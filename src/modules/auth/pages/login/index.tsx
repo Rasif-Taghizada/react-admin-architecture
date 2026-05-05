@@ -1,14 +1,14 @@
 import { Card, Flex } from 'antd';
 import Title from 'antd/es/typography/Title';
-import { LogoSmall } from '../../../../assets/icons';
-import LoginFormItem from '../../components/loginForm';
+import { LogoSmall } from '@/assets/icons';
+import LoginFormItem from '@/modules/auth/components/loginForm';
 import { useNavigate, useSearchParams } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
-import type { AppDispatch, RootState } from '../../../../common/store';
-import type { LoginData } from '../../../../common/types';
-import { login } from '../../../../common/store/slices/authSlices';
+import type { AppDispatch, RootState } from '@/common/store';
+import type { LoginData } from '@/common/types';
+import { login } from '@/common/store/slices/authSlices';
 import { useEffect, useMemo } from 'react';
-import { useTranslation } from '../../../../../node_modules/react-i18next';
+import { useTranslation } from 'react-i18next';
 
 const Login = () => {
   const { t } = useTranslation();

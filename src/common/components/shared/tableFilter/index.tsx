@@ -1,9 +1,9 @@
 import React from 'react';
 import { Input, Select, Space } from 'antd';
 import { SearchOutlined } from '@ant-design/icons';
-import type { TableFilterProps } from '../../../types';
-import { statusOptions } from '../../../utils/constant';
-import { useTranslation } from '../../../../../node_modules/react-i18next';
+import type { TableFilterProps } from '@/common/types';
+import { statusOptions } from '@/common/utils/constant';
+import { useTranslation } from 'react-i18next';
 
 const TableFilter: React.FC<TableFilterProps> = ({
   searchText,

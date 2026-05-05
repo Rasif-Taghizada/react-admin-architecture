@@ -4,14 +4,14 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: #f3f0ee;
+  background-color: var(--color--shell);
 }
 
 .auth__card{
   width:700px;
   height:85vh;
   border-radius: 20px;
-  background: #FEFEFE;
+  background: var(--color--surface);
   padding:2% 10%;
 }
 
@@ -31,7 +31,7 @@
     border-radius: 20px;
     cursor:pointer;
     background: var(--color--primary);
-    color:var(--color--black)
+    color: #fff;
 }
 
 .button:hover{

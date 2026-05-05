@@ -14,7 +14,7 @@
     border-radius: 20px;
     cursor:pointer;
     background: var(--color--primary);
-    color:var(--color--black)
+    color: #fff;
 }
 
 .button:hover{

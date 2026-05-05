@@ -14,10 +14,25 @@
 }
 
 :root {
-  --color--primary: #E76C48;
-  --color--black: #000;
-  --color--grey: #EBEBEB;
+  --color--primary: #2563eb;
+  --color--primary-hover: #1d4ed8;
+  --color--primary-soft: #dbeafe;
+  --color--primary-muted: #eff6ff;
+  --color--shell: #edf2f9;
+  --color--surface: #fefefe;
+  --color--black: #0f172a;
+  --color--grey: #e2e8f0;
 
   --transition: all 300ms ease;
+}
 
+[data-theme='dark'] {
+  --color--primary: #60a5fa;
+  --color--primary-hover: #3b82f6;
+  --color--primary-soft: rgba(37, 99, 235, 0.22);
+  --color--primary-muted: #1e3a5f;
+  --color--shell: #0f172a;
+  --color--surface: #1e293b;
+  --color--black: #f1f5f9;
+  --color--grey: #334155;
 }

@@ -1,4 +1,4 @@
-import type { ActivityItem, UserData } from '../../../modules/users/types';
+import type { ActivityItem, UserData } from '@/modules/users/types';
 
 const mockData: UserData[] = [
   {

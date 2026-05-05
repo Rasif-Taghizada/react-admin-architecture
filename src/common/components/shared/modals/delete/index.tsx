@@ -1,7 +1,7 @@
 import React from "react";
 import { Button, Typography } from "antd";
 import AppModal from "..";
-import { useTranslation } from '../../../../../../node_modules/react-i18next';
+import { useTranslation } from 'react-i18next';
 
 const { Text } = Typography;
 
@@ -47,7 +47,7 @@ const DeleteModal: React.FC<DeleteModalProps> = ({
       >
         <Button
           type="primary"
-          style={{ backgroundColor: "#D06A45", borderColor: "#D06A45" }}
+          style={{ backgroundColor: 'var(--color--primary)', borderColor: 'var(--color--primary)' }}
           onClick={onCancel}
         >
           {t('common.cancel')}

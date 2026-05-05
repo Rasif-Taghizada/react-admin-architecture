@@ -1,10 +1,10 @@
 import axios from 'axios';
-import { store } from '../store';
-import { logout as logoutAction } from '../store/slices/authSlices';
+import { store } from '@/common/store';
+import { logout as logoutAction } from '@/common/store/slices/authSlices';
 import { v4 as uuidv4 } from 'uuid';
-import { openNotification } from '../components/shared/notification';
-import { getErrorMessage } from '../utils/helper/error';
-import { refreshService } from './services/authService';
+import { openNotification } from '@/common/components/shared/notification';
+import { getErrorMessage } from '@/common/utils/helper/error';
+import { refreshService } from '@/common/libs/services/authService';
 
 const baseURL = import.meta.env.VITE_BASE_URL;
 
